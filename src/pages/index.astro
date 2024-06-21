@@ -8,8 +8,8 @@ const headlineNews = {
 	title: 'The Bright Future of Web 3.0?',
 	excerpt: 'We dive into the next evolution of the web that claims to put the power of the platforms back into the hands of the people. But is it really fulfilling its promise?',
 	image: {
-		desktop: 'images/image-web-3-destop.jpg',
-		mobile: 'images/image-web-3-mobile.jpg'
+		desktop: '/images/image-web-3-destop.jpg',
+		mobile: '/images/image-web-3-mobile.jpg'
 	}
 }
 const latestNews = [
@@ -34,19 +34,19 @@ const featuredNews = [
 		title: 'Reviving Retro PCs',
 		body: 'What happens when old PCs are given modern upgrades?',
 		href: '#',
-		image: 'images/image-retro-pcs.jpg',
+		image: '/images/image-retro-pcs.jpg',
 	},
 	{
 		title: 'Top 10 Laptops of 2022',
 		body: 'Our best picks for various needs and budgets.',
 		href: '#',
-		image: 'images/image-top-laptops.jpg',
+		image: '/images/image-top-laptops.jpg',
 	},
 	{
 		title: 'The Growth of Gaming',
 		body: 'How the pandemic has sparked fresh opportunities.',
 		href: '#',
-		image: 'images/image-gaming-growth.jpg',
+		image: '/images/image-gaming-growth.jpg',
 	},
 ]
 ---
@@ -55,7 +55,7 @@ const featuredNews = [
 	<main>
 		<Navbar />
 		<div class="container wrapper">
-			<Headline :news-data="headlineNews" />
+			<Headline news-data={headlineNews} />
 			<div class="newest">
 				<h2>New</h2>
 				{
