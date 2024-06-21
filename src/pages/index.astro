@@ -1,8 +1,17 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import Navbar from '@/components/Navbar.astro'
+import Headline from '@/components/Headline.astro'
 import NewsCard from '@/components/NewsCard.astro'
 
+const headlineNews = {
+	title: 'The Bright Future of Web 3.0?',
+	excerpt: 'We dive into the next evolution of the web that claims to put the power of the platforms back into the hands of the people. But is it really fulfilling its promise?',
+	image: {
+		desktop: '/images/image-web-3-destop.jpg',
+		mobile: '/images/image-web-3-mobile.jpg'
+	}
+}
 const latestNews = [
 	{
 		title: 'Hydrogen VS Electric Cars',
@@ -20,7 +29,7 @@ const latestNews = [
 		href: '#',
 	},
 ]
-const newsOthers = [
+const featuredNews = [
 	{
 		title: 'Reviving Retro PCs',
 		body: 'What happens when old PCs are given modern upgrades?',
@@ -46,21 +55,7 @@ const newsOthers = [
 	<main>
 		<Navbar />
 		<div class="container wrapper">
-			<div class="headline">
-				<img src="/images/image-web-3-desktop.jpg" alt="" />
-				<div class="headline-content">
-					<h1>The Bright Future of Web 3.0?</h1>
-					<div class="headline-text">
-						<p>
-							We dive into the next evolution of the web that
-							claims to put the power of the platforms back into
-							the hands of the people. But is it really fulfilling
-							its promise?
-						</p>
-						<button>Read more</button>
-					</div>
-				</div>
-			</div>
+			<Headline :news-data="headlineNews" />
 			<div class="newest">
 				<h2>New</h2>
 				{
@@ -75,7 +70,7 @@ const newsOthers = [
 				}
 			</div>
 			{
-				newsOthers.map((news, index) => (
+				featuredNews.map((news, index) => (
 					<NewsCard news={news} index={index} />
 				))
 			}
@@ -96,30 +91,6 @@ const newsOthers = [
 			'headline headline newest'
 			'headline headline newest'
 			'news-1 news-2 news-3';
-	}
-
-	.headline {
-		grid-area: headline;
-	}
-
-	.headline h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		padding-right: 1.5rem;
-		line-height: 3.5rem;
-	}
-
-	.headline-content {
-		margin-top: 2rem;
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 2rem;
-	}
-
-	.headline-text {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
 	}
 
 	.newest {
@@ -186,11 +157,6 @@ const newsOthers = [
 				'news-1'
 				'news-2'
 				'news-3';
-		}
-
-		.headline-content {
-			grid-template-columns: 1fr;
-			gap: 0.5rem;
 		}
 
 		.newest {

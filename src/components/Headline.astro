@@ -1,0 +1,51 @@
+---
+const {newsData} = Astro.props
+---
+
+<div class="headline">
+    <picture>
+        <img src={newsData.image.desktop} alt="" />
+    </picture>
+    <div class="headline-content">
+        <h1>{newsData.title}</h1>
+        <div class="headline-text">
+            <p>
+                { newsData.excerpt}
+            </p>
+            <button>Read more</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    	.headline {
+		grid-area: headline;
+	}
+
+	.headline h1 {
+		font-size: 3rem;
+		font-weight: 800;
+		padding-right: 1.5rem;
+		line-height: 3.5rem;
+	}
+
+	.headline-content {
+		margin-top: 2rem;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2rem;
+	}
+
+	.headline-text {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	@media screen and (max-width: 768px) {
+		.headline-content {
+			grid-template-columns: 1fr;
+			gap: 0.5rem;
+		}
+	}
+</style>
