@@ -1,0 +1,200 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import Navbar from '@/components/Navbar.astro'
+import NewsCard from '@/components/NewsCard.astro'
+
+const latestNews = [
+	{
+		title: 'Hydrogen VS Electric Cars',
+		body: 'Will hydrogen-fueled cars ever catch up to EVs?',
+		href: '#',
+	},
+	{
+		title: 'The Downsides of AI Artistry',
+		body: 'What are the possible adverse effects of on-demand AI image generation?',
+		href: '#',
+	},
+	{
+		title: 'Is VC Funding Drying Up?',
+		body: 'Private funding by VC firms is down 50% YOY. We take a look at what that means.',
+		href: '#',
+	},
+]
+const newsOthers = [
+	{
+		title: 'Reviving Retro PCs',
+		body: 'What happens when old PCs are given modern upgrades?',
+		href: '#',
+		image: '/images/image-retro-pcs.jpg',
+	},
+	{
+		title: 'Top 10 Laptops of 2022',
+		body: 'Our best picks for various needs and budgets.',
+		href: '#',
+		image: '/images/image-top-laptops.jpg',
+	},
+	{
+		title: 'The Growth of Gaming',
+		body: 'How the pandemic has sparked fresh opportunities.',
+		href: '#',
+		image: '/images/image-gaming-growth.jpg',
+	},
+]
+---
+
+<Layout title="Frontend Mentor | News homepage">
+	<main>
+		<Navbar />
+		<div class="container wrapper">
+			<div class="headline">
+				<img src="/images/image-web-3-desktop.jpg" alt="" />
+				<div class="headline-content">
+					<h1>The Bright Future of Web 3.0?</h1>
+					<div class="headline-text">
+						<p>
+							We dive into the next evolution of the web that
+							claims to put the power of the platforms back into
+							the hands of the people. But is it really fulfilling
+							its promise?
+						</p>
+						<button>Read more</button>
+					</div>
+				</div>
+			</div>
+			<div class="newest">
+				<h2>New</h2>
+				{
+					latestNews.map(news => {
+						return (
+							<div class="newest-content">
+								<h3 class="newest-title">{news.title}</h3>
+								<p class="newest-text">{news.body}</p>
+							</div>
+						)
+					})
+				}
+			</div>
+			{
+				newsOthers.map((news, index) => (
+					<NewsCard news={news} index={index} />
+				))
+			}
+		</div>
+	</main>
+</Layout>
+
+<style>
+	main {
+		min-height: 100vh;
+	}
+	.wrapper {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-rows: repeat(3);
+		gap: 2rem;
+		grid-template-areas:
+			'headline headline newest'
+			'headline headline newest'
+			'news-1 news-2 news-3';
+	}
+
+	.headline {
+		grid-area: headline;
+	}
+
+	.headline h1 {
+		font-size: 3rem;
+		font-weight: 800;
+		padding-right: 1.5rem;
+		line-height: 3.5rem;
+	}
+
+	.headline-content {
+		margin-top: 2rem;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2rem;
+	}
+
+	.headline-text {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.newest {
+		grid-area: newest;
+		background-color: var(--Very-dark-blue);
+		padding: 1.5rem;
+	}
+
+	.newest h2 {
+		color: var(--Soft-orange);
+	}
+
+	.newest-content {
+		padding: 1rem 0;
+	}
+	.newest-content:not(:last-child) {
+		border-bottom: 1px solid var(--Dark-grayish-blue);
+	}
+
+	.newest-title {
+		color: var(--Off-white);
+		font-size: 1.1rem;
+	}
+
+	.newest-title:hover {
+		color: var(--Soft-orange);
+		cursor: pointer;
+	}
+
+	.newest-text {
+		color: var(--Grayish-blue);
+		font-size: 12px;
+	}
+
+	.news-1 {
+		grid-area: news-1;
+	}
+
+	.news-2 {
+		grid-area: news-2;
+	}
+
+	.news-3 {
+		grid-area: news-3;
+	}
+
+	@media screen and (max-width: 1024px) {
+		.wrapper {
+			grid-template-columns: 1fr 1fr;
+			grid-template-areas:
+				'headline headline'
+				'newest newest'
+				'news-1 news-2'
+				'news-3 news-3';
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		.wrapper {
+			grid-template-columns: 1fr;
+			grid-template-areas:
+				'headline'
+				'newest'
+				'news-1'
+				'news-2'
+				'news-3';
+		}
+
+		.headline-content {
+			grid-template-columns: 1fr;
+			gap: 0.5rem;
+		}
+
+		.newest {
+			margin: 2rem 0;
+		}
+	}
+</style>

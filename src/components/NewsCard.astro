@@ -1,0 +1,43 @@
+---
+const { news, index } = Astro.props
+---
+
+<div class={`news-card news-${index + 1}`}>
+	<img src={news.image} alt="" />
+	<div class="news-card-content">
+		<div class="news-card-index">{'0' + (index + 1)}</div>
+		<h3 class="news-card-title">{news.title}</h3>
+		<p class="news-card-text">{news.body}</p>
+	</div>
+</div>
+
+<style>
+	.news-card {
+		display: grid;
+		grid-template-columns: 1fr 2fr;
+		grid-template-rows: 1;
+		gap: 1rem;
+	}
+	.news-card-index {
+		color: var(--Soft-red);
+		font-size: 1.8rem;
+		font-weight: 700;
+	}
+	.news-card-title {
+		font-size: 1rem;
+		margin-bottom: 0.5rem;
+		cursor: pointer;
+	}
+	.news-card-title:hover {
+		color: var(--Soft-red);
+	}
+	.news-card-text {
+		font-size: 0.85rem;
+	}
+
+	@media screen and (max-width: 768px) {
+		.news-card {
+			grid-template-columns: 1fr 3fr;
+		}
+	}
+</style>

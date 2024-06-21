@@ -1,0 +1,94 @@
+---
+interface Props {
+	title: string
+}
+
+const { title } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="/images/favicon-32x32.png"
+		/>
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta
+			name="description"
+			content="Solutions for Frontend Mentor Challenges"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/@picocss/pico@2/css/pico.min.css"
+		/>
+	</head>
+
+	<body>
+		<slot />
+
+		<footer class="attribution">
+			Challenge by <a
+				href="https://www.frontendmentor.io?ref=challenge"
+				target="_blank">Frontend Mentor</a
+			>. Coded by <a href="https://github.com/b4khtiar">Y.Bakhtiar</a>.
+		</footer>
+	</body>
+
+	<style is:global>
+		@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+		:root {
+			--Soft-orange: hsl(35, 77%, 62%);
+			--Soft-red: hsl(5, 85%, 63%);
+			--Off-white: hsl(36, 100%, 99%);
+			--Grayish-blue: hsl(233, 8%, 79%);
+			--Dark-grayish-blue: hsl(236, 13%, 42%);
+			--Very-dark-blue: hsl(240, 100%, 5%);
+		}
+		[x-cloak] {
+			display: none !important;
+		}
+		html {
+			font-family: 'Inter', sans-serif;
+			font-size: 16px;
+		}
+
+		p {
+			font-size: 15px;
+			color: var(--Dark-grayish-blue);
+		}
+
+		button {
+			border-radius: 0;
+			padding-left: 2rem;
+			padding-right: 2rem;
+			font-size: 0.9rem;
+			text-transform: uppercase;
+			letter-spacing: 0.25em;
+			font-weight: 700;
+			border: 0;
+			background-color: var(--Soft-red);
+			color: var(--Very-dark-blue);
+			width: fit-content;
+		}
+
+		button:hover {
+			background-color: var(--Very-dark-blue);
+			color: var(--Off-white);
+			transition: all 0.25s ease-in;
+		}
+
+		.attribution {
+			padding: 1rem;
+			font-size: 11px;
+			text-align: center;
+		}
+		.attribution a {
+			color: var(--Soft-red);
+		}
+	</style>
+</html>
