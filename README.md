@@ -38,7 +38,7 @@ Users should be able to:
 
 ### Built with
 
-- [Astro](https://astro.build/) - 
+- [Astro](https://astro.build/) - Web framework for content-driven website 
 - [Alpinejs](https://alpinejs.dev/) - JS library
 - [Pico css](https://styled-components.com/) - For style reset
 
