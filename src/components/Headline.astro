@@ -4,7 +4,7 @@ const {newsData} = Astro.props
 
 <div class="headline">
     <picture>
-        <img src={newsData.image.desktop} alt="" />
+        <img srcset={newsData.image.desktop} sizes="(min-width: 768px)" src={newsData.image.mobile} alt="Headline image" />
     </picture>
     <div class="headline-content">
         <h1>{newsData.title}</h1>
